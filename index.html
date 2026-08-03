@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Questionnaire très très urgent... 😈</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, #ffe5ec 0%, #ffc2d1 100%);
+      display: flex; justify-content: center; align-items: center;
+      min-height: 100vh; padding: 15px; color: #2b2b2b;
+    }
+    .card {
+      background: #ffffff; padding: 30px 25px; border-radius: 24px;
+      box-shadow: 0 15px 35px rgba(216, 27, 96, 0.15); text-align: center;
+      max-width: 440px; width: 100%; position: relative; overflow: hidden;
+    }
+    .step { display: none; animation: fadeIn 0.4s ease-in-out; }
+    .step.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+    h1 { color: #c2185b; font-size: 1.5rem; margin-bottom: 12px; line-height: 1.3; }
+    p { color: #555; font-size: 0.98rem; line-height: 1.5; margin-bottom: 20px; }
+    .emoji { font-size: 3.5rem; margin-bottom: 10px; display: inline-block; }
+    button {
+      padding: 14px 28px; font-size: 1rem; font-weight: 700; border: none;
+      border-radius: 30px; cursor: pointer; margin: 8px 4px; transition: all 0.25s ease;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #e91e63 0%, #c2185b 100%);
+      color: white; box-shadow: 0 5px 15px rgba(233, 30, 99, 0.3); width: 100%;
+    }
+    .btn-primary:hover { transform: translateY(-2px); }
+    .slider-container { margin: 25px 0 15px; }
+    input[type=range] { width: 100%; accent-color: #e91e63; height: 8px; background: #f8bbd0; border-radius: 5px; }
+    .slider-value { font-size: 1.6rem; font-weight: 800; color: #c2185b; margin-top: 12px; }
+    .grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-bottom: 15px; }
+    .grid-item {
+      border: 2px solid #f8bbd0; background: #fffafa; padding: 14px 18px;
+      border-radius: 16px; cursor: pointer; font-weight: 600; font-size: 0.95rem;
+      color: #444; transition: all 0.2s ease; text-align: left;
+    }
+    .grid-item:hover { border-color: #e91e63; background-color: #fce4ec; color: #880e4f; }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <!-- TON LIEN FORMSPREE PRÉ-REMPLI -->
+    <form id="quizForm" action="https://formspree.io/f/mvzeebeo" method="POST">
+      <input type="hidden" name="Niveau de manque" id="inputScore" value="10/10">
+      <input type="hidden" name="Ce qui manque le plus" id="inputMissing">
+      <input type="hidden" name="Ce qu'il/elle va me faire" id="inputWillDo">
+      <input type="hidden" name="Ce qu'il/elle veut que je fasse" id="inputWantDone">
+
+      <!-- ÉTAPE 1 : Le constat -->
+      <div id="step1" class="step active">
+        <div class="emoji">🗓️😩</div>
+        <h1>Petite vérification d'urgence...</h1>
+        <p>Ça fait presque <b>1 mois complet</b> qu'on s'est pas vus à cause des vacances. On est d'accord que c'est une vraie torture ?</p>
+        <button type="button" class="btn-primary" onclick="nextStep(2)">C'est beaucoup trop long ! 🛑</button>
+      </div>
+
+      <!-- ÉTAPE 2 : Échelle de manque -->
+      <div id="step2" class="step">
+        <div class="emoji">📈👀</div>
+        <h1>Question honnête :</h1>
+        <p>Je te manque à quel point sur une échelle de 1 à 10 ?</p>
+        <div class="slider-container">
+          <input type="range" id="missingRange" min="1" max="100" value="10" oninput="updateSlider(this.value)">
+          <div class="slider-value" id="rangeValue">10/10</div>
+        </div>
+        <button type="button" class="btn-primary" onclick="nextStep(3)">Valider mon score 💖</button>
+      </div>
+
+      <!-- ÉTAPE 3 : Ce qui manque le plus -->
+      <div id="step3" class="step">
+        <div class="emoji">💭🫦</div>
+        <h1>Et qu'est-ce qui te manque le PLUS chez moi là tout de suite ?</h1>
+        <div class="grid">
+          <div class="grid-item" onclick="selectOption('inputMissing', 'Mon humour', 4)">Mon humour exceptionnel 🤓</div>
+          <div class="grid-item" onclick="selectOption('inputMissing', 'Mes câlins', 4)">Mes câlins réconfortants 🫂</div>
+          <div class="grid-item" onclick="selectOption('inputMissing', 'Tes lèvres', 4)">Tes lèvres contre les miennes... 👄</div>
+          <div class="grid-item" onclick="selectOption('inputMissing', 'Absolument TOUT', 4)">Absolument TOUT 😏</div>
+        </div>
+      </div>
+
+      <!-- ÉTAPE 4 : Ce qu'elle/il veut te faire -->
+      <div id="step4" class="step">
+        <div class="emoji">👀🔥</div>
+        <h1>À tes risques et périls...</h1>
+        <p>Quand on se revoit ENFIN la prochaine fois, tu me feras quoi en premier ?</p>
+        <div class="grid">
+          <div class="grid-item" onclick="selectOption('inputWillDo', 'Câlin de 10 min', 5)">Un gros câlin de 10 minutes 🫂</div>
+          <div class="grid-item" onclick="selectOption('inputWillDo', 'Bisou sans fin', 5)">Un bisou qui n'en finit plus 💋</div>
+          <div class="grid-item" onclick="selectOption('inputWillDo', 'Sauter dessus direct', 5)">Je te saute dessus direct 😈</div>
+          <div class="grid-item" onclick="selectOption('inputWillDo', 'Secret pro', 5)">Secret professionnel... 🤫</div>
+        </div>
+      </div>
+
+      <!-- ÉTAPE 5 : Ce qu'elle/il veut que TU lui fasses -->
+      <div id="step5" class="step">
+        <div class="emoji">🫵🏽⚡️</div>
+        <h1>Et toi...</h1>
+        <p>Tu aimerais que <b>moi</b> je te fasse quoi en priorité à mon retour ?</p>
+        <div class="grid">
+          <div class="grid-item" onclick="selectOption('inputWantDone', 'Prendre soin de toi', 6)">Prendre soin de toi 💆🏽‍♂️</div>
+          <div class="grid-item" onclick="selectOption('inputWantDone', 'Embrasser tes lèvres', 6)">Embrasser tes lèvres intensément 🫦</div>
+          <div class="grid-item" onclick="selectOption('inputWantDone', 'Soin des biens-aimés 😏', 6)">Prendre grand soin de mes "biens-aimés" 😏✨</div>
+          <div class="grid-item" onclick="selectOption('inputWantDone', 'Traitement VIP', 6)">Un traitement VIP complet 💯</div>
+        </div>
+      </div>
+
+      <!-- ÉTAPE 6 : L'aveu -->
+      <div id="step6" class="step">
+        <div class="emoji">💔🫂</div>
+        <h1>Aveu 100% sincère...</h1>
+        <p>Je veux juste te serrer fort et sentir ton parfum... Tu me manques tellement 😭❤️</p>
+        <p style="font-size: 0.9rem; color: #888;">Es-tu prêt(e) pour le grand retour ?</p>
+        <button type="submit" class="btn-primary">Je suis plus que prêt(e) ! 🚀</button>
+      </div>
+    </form>
+
+    <!-- ÉTAPE 7 : Confirmation finale -->
+    <div id="step7" class="step">
+      <div class="emoji">🚨🫦🔥</div>
+      <h1>MESSAGE ENREGISTRÉ !</h1>
+      <p>Tes réponses sont bien arrivées. Le compte à rebours est officiellement lancé ! ⏳</p>
+      <p style="font-size: 1.1rem; color: #c2185b; font-weight: bold; margin-top: 15px;">
+        Prépare-toi bien, parce que les retrouvailles vont être chaudes ! 😈🔥
+      </p>
+      <p style="font-size: 0.85rem; color: #888; margin-top: 25px;">(P.S. Tes "biens-aimés" n'ont qu'à bien se tenir 😂❤️)</p>
+    </div>
+
+  </div>
+
+  <script>
+    function nextStep(stepNumber) {
+      document.querySelectorAll('.step').forEach(step => step.classList.remove('active'));
+      document.getElementById('step' + stepNumber).classList.add('active');
+    }
+
+    function selectOption(inputId, value, nextStepNum) {
+      document.getElementById(inputId).value = value;
+      nextStep(nextStepNum);
+    }
+
+    function updateSlider(val) {
+      const display = document.getElementById('rangeValue');
+      let text = val + "/10";
+      if(val > 10 && val < 90) text = val + "/10 (C'est déjà mieux ! 😏)";
+      else if(val >= 90) text = val + "/10 !! 🔥🔥";
+      display.innerText = text;
+      document.getElementById('inputScore').value = text;
+    }
+
+    const form = document.getElementById("quizForm");
+    form.addEventListener("submit", async function(event) {
+      event.preventDefault();
+      const data = new FormData(event.target);
+      fetch(event.target.action, {
+        method: form.method,
+        body: data,
+        headers: { 'Accept': 'application/json' }
+      }).then(response => {
+        nextStep(7);
+      }).catch(error => {
+        nextStep(7);
+      });
+    });
+  </script>
+</body>
+        </html>
+                                                                                                                           
