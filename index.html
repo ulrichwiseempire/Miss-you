@@ -53,11 +53,12 @@
     <form id="quizForm" action="https://formspree.io/f/mvzeebeo" method="POST">
       <input type="hidden" name="Niveau de manque" id="inputScore" value="10/10">
       <input type="hidden" name="Ce qui manque le plus" id="inputMissing">
-      <input type="hidden" name="Ce qu'il/elle va me faire" id="inputWillDo">
-      <input type="hidden" name="Ce qu'il/elle veut que je fasse" id="inputWantDone">
+      <input type="hidden" name="Ce qu'elle va me faire" id="inputWillDo">
+      <input type="hidden" name="Ce qu'elle veut que je fasse" id="inputWantDone">
+      <input type="hidden" name="Projet Eglise" id="inputChurch">
+      <input type="hidden" name="Projet Sorties" id="inputOuting">
       <input type="hidden" name="Réponse Je t'aime" id="inputLove" value="Je t'aime aussi 💛">
 
-      <!-- ÉTAPE 1 : Le constat -->
       <div id="step1" class="step active">
         <div class="emoji">🗓️😩</div>
         <h1>Petite vérification d'urgence...</h1>
@@ -65,7 +66,6 @@
         <button type="button" class="btn-primary" onclick="nextStep(2)">C'est beaucoup trop long ! 🛑</button>
       </div>
 
-      <!-- ÉTAPE 2 : Échelle de manque -->
       <div id="step2" class="step">
         <div class="emoji">📈👀</div>
         <h1>Question honnête :</h1>
@@ -77,7 +77,6 @@
         <button type="button" class="btn-primary" onclick="nextStep(3)">Valider mon score 💖</button>
       </div>
 
-      <!-- ÉTAPE 3 : Ce qui manque le plus -->
       <div id="step3" class="step">
         <div class="emoji">💭🫦</div>
         <h1>Et qu'est-ce qui te manque le PLUS chez moi là tout de suite ?</h1>
@@ -89,7 +88,6 @@
         </div>
       </div>
 
-      <!-- ÉTAPE 4 : Ce qu'elle veut te faire -->
       <div id="step4" class="step">
         <div class="emoji">👀🔥</div>
         <h1>À tes risques et périls...</h1>
@@ -102,7 +100,6 @@
         </div>
       </div>
 
-      <!-- ÉTAPE 5 : Ce qu'elle veut que TU lui fasses -->
       <div id="step5" class="step">
         <div class="emoji">🫵🏽⚡️</div>
         <h1>Et toi...</h1>
@@ -110,21 +107,41 @@
         <div class="grid">
           <div class="grid-item" onclick="selectOption('inputWantDone', 'Prendre soin de toi', 6)">Prendre soin de toi 💆🏽‍♂️</div>
           <div class="grid-item" onclick="selectOption('inputWantDone', 'Embrasser tes lèvres', 6)">Embrasser tes lèvres intensément 🫦</div>
-          <div class="grid-item" onclick="selectOption('inputWantDone', 'Soin des biens-aimés 😏', 6)">Prendre grand soin de mes "biens-aimés" 😏✨</div>
+          <div class="grid-item" onclick="selectOption('inputWantDone', 'Soin de MES biens-aimés ❤️', 6)">Prendre grand soin de <b>mes biens-aimés</b> 😏❤️</div>
           <div class="grid-item" onclick="selectOption('inputWantDone', 'Traitement VIP', 6)">Un traitement VIP complet 💯</div>
         </div>
       </div>
 
-      <!-- ÉTAPE 6 : L'aveu -->
       <div id="step6" class="step">
+        <div class="emoji">⛪️😂</div>
+        <h1>Question très importante...</h1>
+        <p>Si je rentre, est-ce qu'on va ENFIN aller à l'église ensemble ? 🙈</p>
+        <div class="grid">
+          <div class="grid-item" onclick="selectOption('inputChurch', 'Oui enfin !', 7)">Oui ! C'est bon cette fois c'est la bonne 🙏🏽✨</div>
+          <div class="grid-item" onclick="selectOption('inputChurch', 'On va encore reporter haha', 7)">On sait tous les deux qu'on va reporter 😂</div>
+          <div class="grid-item" onclick="selectOption('inputChurch', 'Promis juré', 7)">Promis juré, cette fois on y va 🤝🏽</div>
+        </div>
+      </div>
+
+      <div id="step7" class="step">
+        <div class="emoji">🍹🚗</div>
+        <h1>Et concernant nos sorties à deux...</h1>
+        <p>Toutes les sorties qu'on planifie depuis des décennies sans jamais les faire, on s'y met pour de vrai ? 🤣</p>
+        <div class="grid">
+          <div class="grid-item" onclick="selectOption('inputOuting', 'Obligé !', 8)">Obligé ! On valide toutes nos dates manquées 🔥</div>
+          <div class="grid-item" onclick="selectOption('inputOuting', 'Oui avec toi', 8)">Partout où tu m'emmènes ! 🥰</div>
+          <div class="grid-item" onclick="selectOption('inputOuting', 'Planning blindé', 8)">Prépare-toi, le programme sera très chargé 🗓️</div>
+        </div>
+      </div>
+
+      <div id="step8" class="step">
         <div class="emoji">💔🫂</div>
         <h1>Aveu 100% sincère...</h1>
         <p>Je veux juste te serrer fort et sentir ton parfum... Tu me manques tellement 😭❤️</p>
-        <button type="button" class="btn-primary" onclick="nextStep(7)">Suivant ➜</button>
+        <button type="button" class="btn-primary" onclick="nextStep(9)">Suivant ➜</button>
       </div>
 
-      <!-- ÉTAPE 7 : LE DÉDICACE SPÉCIALE NANCY & JE T'AIME 💛 -->
-      <div id="step7" class="step">
+      <div id="step9" class="step">
         <div class="emoji">👑💛</div>
         <h1>Pour toi mon bébé Nannnncyyyyy ✨</h1>
         <p style="font-size: 1.2rem; font-weight: bold; color: #c2185b; margin-top: 10px;">
@@ -139,15 +156,14 @@
       </div>
     </form>
 
-    <!-- ÉTAPE 8 : Confirmation finale -->
-    <div id="step8" class="step">
+    <div id="step10" class="step">
       <div class="emoji">🚨🫦🔥</div>
       <h1>MESSAGE ENREGISTRÉ !</h1>
       <p>Tes réponses sont bien arrivées mon bébé. Le compte à rebours est officiellement lancé ! ⏳</p>
       <p style="font-size: 1.1rem; color: #c2185b; font-weight: bold; margin-top: 15px;">
-        Prépare-toi bien Nannnncyyyyy, parce que les retrouvailles vont être très chaudes ! 😈🔥
+        Prépare-toi bien Nannnncyyyyy, parce que les retrouvailles (et les sorties) vont être au top ! 😈🔥
       </p>
-      <p style="font-size: 0.85rem; color: #888; margin-top: 25px;">(P.S. Tes "biens-aimés" n'ont qu'à bien se tenir 😂❤️)</p>
+      <p style="font-size: 0.85rem; color: #888; margin-top: 25px;">(P.S. Mes "biens-aimés" dans ton cœur sont prêts 😂❤️)</p>
     </div>
 
   </div>
@@ -172,7 +188,7 @@
       document.getElementById('inputScore').value = text;
     }
 
-    // Fonction pour faire fuir le bouton "Non 😜"
+    // Faire fuir le bouton "Non 😜"
     function moveBtn() {
       const btn = document.getElementById('noBtn');
       const x = Math.random() * 200 - 100;
@@ -189,12 +205,12 @@
         body: data,
         headers: { 'Accept': 'application/json' }
       }).then(response => {
-        nextStep(8);
+        nextStep(10);
       }).catch(error => {
-        nextStep(8);
+        nextStep(10);
       });
     });
   </script>
 </body>
   </html>
-  
+            
