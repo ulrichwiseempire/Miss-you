@@ -42,17 +42,20 @@
       color: #444; transition: all 0.2s ease; text-align: left;
     }
     .grid-item:hover { border-color: #e91e63; background-color: #fce4ec; color: #880e4f; }
+    
+    .btn-love { background-color: #ffb703; color: #000; font-size: 1.1rem; }
+    .btn-run { background-color: #e0e0e0; color: #666; position: absolute; }
   </style>
 </head>
 <body>
 
   <div class="card">
-    <!-- TON LIEN FORMSPREE PRÉ-REMPLI -->
     <form id="quizForm" action="https://formspree.io/f/mvzeebeo" method="POST">
       <input type="hidden" name="Niveau de manque" id="inputScore" value="10/10">
       <input type="hidden" name="Ce qui manque le plus" id="inputMissing">
       <input type="hidden" name="Ce qu'il/elle va me faire" id="inputWillDo">
       <input type="hidden" name="Ce qu'il/elle veut que je fasse" id="inputWantDone">
+      <input type="hidden" name="Réponse Je t'aime" id="inputLove" value="Je t'aime aussi 💛">
 
       <!-- ÉTAPE 1 : Le constat -->
       <div id="step1" class="step active">
@@ -86,7 +89,7 @@
         </div>
       </div>
 
-      <!-- ÉTAPE 4 : Ce qu'elle/il veut te faire -->
+      <!-- ÉTAPE 4 : Ce qu'elle veut te faire -->
       <div id="step4" class="step">
         <div class="emoji">👀🔥</div>
         <h1>À tes risques et périls...</h1>
@@ -99,7 +102,7 @@
         </div>
       </div>
 
-      <!-- ÉTAPE 5 : Ce qu'elle/il veut que TU lui fasses -->
+      <!-- ÉTAPE 5 : Ce qu'elle veut que TU lui fasses -->
       <div id="step5" class="step">
         <div class="emoji">🫵🏽⚡️</div>
         <h1>Et toi...</h1>
@@ -117,18 +120,32 @@
         <div class="emoji">💔🫂</div>
         <h1>Aveu 100% sincère...</h1>
         <p>Je veux juste te serrer fort et sentir ton parfum... Tu me manques tellement 😭❤️</p>
-        <p style="font-size: 0.9rem; color: #888;">Es-tu prêt(e) pour le grand retour ?</p>
-        <button type="submit" class="btn-primary">Je suis plus que prêt(e) ! 🚀</button>
+        <button type="button" class="btn-primary" onclick="nextStep(7)">Suivant ➜</button>
+      </div>
+
+      <!-- ÉTAPE 7 : LE DÉDICACE SPÉCIALE NANCY & JE T'AIME 💛 -->
+      <div id="step7" class="step">
+        <div class="emoji">👑💛</div>
+        <h1>Pour toi mon bébé Nannnncyyyyy ✨</h1>
+        <p style="font-size: 1.2rem; font-weight: bold; color: #c2185b; margin-top: 10px;">
+          Je t'aime 💛
+        </p>
+        <p style="font-size: 0.9rem; color: #666; margin-bottom: 25px;">(Et là tu n'as pas le choix de la réponse 😏)</p>
+        
+        <div style="position: relative; min-height: 100px;">
+          <button type="submit" class="btn-primary btn-love">Moi aussi je t'aime ! 💛✨</button>
+          <button type="button" class="btn-run" id="noBtn" onmouseover="moveBtn()" onclick="moveBtn()">Non 😜</button>
+        </div>
       </div>
     </form>
 
-    <!-- ÉTAPE 7 : Confirmation finale -->
-    <div id="step7" class="step">
+    <!-- ÉTAPE 8 : Confirmation finale -->
+    <div id="step8" class="step">
       <div class="emoji">🚨🫦🔥</div>
       <h1>MESSAGE ENREGISTRÉ !</h1>
-      <p>Tes réponses sont bien arrivées. Le compte à rebours est officiellement lancé ! ⏳</p>
+      <p>Tes réponses sont bien arrivées mon bébé. Le compte à rebours est officiellement lancé ! ⏳</p>
       <p style="font-size: 1.1rem; color: #c2185b; font-weight: bold; margin-top: 15px;">
-        Prépare-toi bien, parce que les retrouvailles vont être chaudes ! 😈🔥
+        Prépare-toi bien Nannnncyyyyy, parce que les retrouvailles vont être très chaudes ! 😈🔥
       </p>
       <p style="font-size: 0.85rem; color: #888; margin-top: 25px;">(P.S. Tes "biens-aimés" n'ont qu'à bien se tenir 😂❤️)</p>
     </div>
@@ -155,6 +172,14 @@
       document.getElementById('inputScore').value = text;
     }
 
+    // Fonction pour faire fuir le bouton "Non 😜"
+    function moveBtn() {
+      const btn = document.getElementById('noBtn');
+      const x = Math.random() * 200 - 100;
+      const y = Math.random() * 100 - 50;
+      btn.style.transform = `translate(${x}px, ${y}px)`;
+    }
+
     const form = document.getElementById("quizForm");
     form.addEventListener("submit", async function(event) {
       event.preventDefault();
@@ -164,12 +189,12 @@
         body: data,
         headers: { 'Accept': 'application/json' }
       }).then(response => {
-        nextStep(7);
+        nextStep(8);
       }).catch(error => {
-        nextStep(7);
+        nextStep(8);
       });
     });
   </script>
 </body>
-        </html>
-                                                                                                                           
+  </html>
+  
