@@ -3,167 +3,144 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Questionnaire très très urgent... 😈</title>
+  <title>Pour toi, Nannnncyyyyy 🕊️✨</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-      background: linear-gradient(135deg, #ffe5ec 0%, #ffc2d1 100%);
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+      background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%), linear-gradient(to top, #fad0c4 0%, #ffd1ff 100%);
+      background-blend-mode: overlay;
       display: flex; justify-content: center; align-items: center;
-      min-height: 100vh; padding: 15px; color: #2b2b2b;
+      min-height: 100vh; padding: 20px; color: #333333;
     }
     .card {
-      background: #ffffff; padding: 30px 25px; border-radius: 24px;
-      box-shadow: 0 15px 35px rgba(216, 27, 96, 0.15); text-align: center;
-      max-width: 440px; width: 100%; position: relative; overflow: hidden;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      padding: 35px 25px; border-radius: 28px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+      text-align: center; max-width: 460px; width: 100%;
+      position: relative; overflow: hidden;
     }
-    .step { display: none; animation: fadeIn 0.4s ease-in-out; }
+    .audio-btn {
+      position: absolute; top: 15px; right: 15px;
+      background: rgba(255, 255, 255, 0.9); border: none;
+      padding: 8px 12px; border-radius: 20px; font-size: 0.8rem;
+      cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      display: flex; align-items: center; gap: 5px; color: #555;
+    }
+    .step { display: none; animation: fadeIn 0.6s ease-out; }
     .step.active { display: block; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
-    h1 { color: #c2185b; font-size: 1.5rem; margin-bottom: 12px; line-height: 1.3; }
-    p { color: #555; font-size: 0.98rem; line-height: 1.5; margin-bottom: 20px; }
-    .emoji { font-size: 3.5rem; margin-bottom: 10px; display: inline-block; }
-    button {
-      padding: 14px 28px; font-size: 1rem; font-weight: 700; border: none;
-      border-radius: 30px; cursor: pointer; margin: 8px 4px; transition: all 0.25s ease;
-    }
-    .btn-primary {
-      background: linear-gradient(135deg, #e91e63 0%, #c2185b 100%);
-      color: white; box-shadow: 0 5px 15px rgba(233, 30, 99, 0.3); width: 100%;
-    }
-    .btn-primary:hover { transform: translateY(-2px); }
-    .slider-container { margin: 25px 0 15px; }
-    input[type=range] { width: 100%; accent-color: #e91e63; height: 8px; background: #f8bbd0; border-radius: 5px; }
-    .slider-value { font-size: 1.6rem; font-weight: 800; color: #c2185b; margin-top: 12px; }
-    .grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-bottom: 15px; }
-    .grid-item {
-      border: 2px solid #f8bbd0; background: #fffafa; padding: 14px 18px;
-      border-radius: 16px; cursor: pointer; font-weight: 600; font-size: 0.95rem;
-      color: #444; transition: all 0.2s ease; text-align: left;
-    }
-    .grid-item:hover { border-color: #e91e63; background-color: #fce4ec; color: #880e4f; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
     
-    .btn-love { background-color: #ffb703; color: #000; font-size: 1.1rem; }
-    .btn-run { background-color: #e0e0e0; color: #666; position: absolute; }
+    .photo-frame {
+      width: 140px; height: 140px; border-radius: 50%;
+      margin: 0 auto 20px; overflow: hidden;
+      border: 4px solid #fff; box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+    .photo-frame img { width: 100%; height: 100%; object-fit: cover; }
+    
+    h1 { color: #8e44ad; font-size: 1.4rem; font-weight: 600; margin-bottom: 15px; line-height: 1.4; }
+    p { color: #555; font-size: 0.98rem; line-height: 1.6; margin-bottom: 22px; }
+    .quote { font-style: italic; color: #7f8c8d; border-left: 3px solid #8e44ad; padding-left: 12px; text-align: left; margin: 15px 0; }
+    
+    button.btn-primary {
+      padding: 14px 28px; font-size: 0.95rem; font-weight: 600; border: none;
+      border-radius: 25px; cursor: pointer; transition: all 0.3s ease;
+      background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
+      color: #fff; width: 100%; box-shadow: 0 4px 15px rgba(161, 140, 209, 0.4);
+    }
+    button.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(161, 140, 209, 0.6); }
+    
+    .grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-bottom: 20px; }
+    .grid-item {
+      border: 1px solid rgba(142, 68, 173, 0.2); background: rgba(255, 255, 255, 0.7);
+      padding: 14px 18px; border-radius: 16px; cursor: pointer;
+      font-weight: 500; font-size: 0.95rem; color: #444;
+      transition: all 0.25s ease; text-align: left;
+    }
+    .grid-item:hover { border-color: #8e44ad; background: #fff; color: #8e44ad; }
+    
+    textarea {
+      width: 100%; padding: 12px; border-radius: 15px;
+      border: 1px solid rgba(142, 68, 173, 0.3); background: rgba(255, 255, 255, 0.9);
+      font-family: inherit; font-size: 0.95rem; margin-bottom: 20px;
+      resize: none; outline: none;
+    }
   </style>
 </head>
 <body>
 
+  <!-- Musique de fond -->
+  <audio id="bgMusic" loop>
+    <source src="musique.mp3" type="audio/mpeg">
+  </audio>
+
   <div class="card">
-    <form id="quizForm" action="https://formspree.io/f/mvzeebeo" method="POST">
-      <input type="hidden" name="Niveau de manque" id="inputScore" value="10/10">
-      <input type="hidden" name="Ce qui manque le plus" id="inputMissing">
-      <input type="hidden" name="Ce qu'elle va me faire" id="inputWillDo">
-      <input type="hidden" name="Ce qu'elle veut que je fasse" id="inputWantDone">
-      <input type="hidden" name="Projet Eglise" id="inputChurch">
-      <input type="hidden" name="Projet Sorties" id="inputOuting">
-      <input type="hidden" name="Réponse Je t'aime" id="inputLove" value="Je t'aime aussi 💛">
+    <button class="audio-btn" onclick="toggleMusic()">🎵 <span id="musicText">Musique</span></button>
 
+    <form id="loveForm" action="https://formspree.io/f/mvzeebeo" method="POST">
+      <input type="hidden" name="Pardon accepté ?" id="inputPardon">
+      <input type="hidden" name="Ce qu'elle a ressenti" id="inputFeeling">
+      <input type="hidden" name="Sa promesse pour nous" id="inputHerPromise">
+
+      <!-- ÉTAPE 1 : Accueil doux & Photo de la plage -->
       <div id="step1" class="step active">
-        <div class="emoji">🗓️😩</div>
-        <h1>Petite vérification d'urgence...</h1>
-        <p>Ça fait presque <b>1 mois complet</b> qu'on s'est pas vus à cause des vacances. On est d'accord que c'est une vraie torture ?</p>
-        <button type="button" class="btn-primary" onclick="nextStep(2)">C'est beaucoup trop long ! 🛑</button>
+        <div class="photo-frame">
+          <img src="image.jpg" alt="Nancy et moi">
+        </div>
+        <h1>Pour toi, Nannnncyyyyy 🕊️</h1>
+        <p>J'ai pris quelques minutes pour poser des mots sur ce que je ressens. Pas de blagues cette fois... juste toi et moi, en toute sincérité.</p>
+        <button type="button" class="btn-primary" onclick="nextStep(2)">Prendre un instant pour lire 🤍</button>
       </div>
 
+      <!-- ÉTAPE 2 : Ce qu'elle apporte dans ta vie -->
       <div id="step2" class="step">
-        <div class="emoji">📈👀</div>
-        <h1>Question honnête :</h1>
-        <p>Je te manque à quel point sur une échelle de 1 à 10 ?</p>
-        <div class="slider-container">
-          <input type="range" id="missingRange" min="1" max="100" value="10" oninput="updateSlider(this.value)">
-          <div class="slider-value" id="rangeValue">10/10</div>
-        </div>
-        <button type="button" class="btn-primary" onclick="nextStep(3)">Valider mon score 💖</button>
+        <h1>La place que tu as 💫</h1>
+        <p>Tu n'imagines pas à quel point ton arrivée a apporté de la lumière et de l'apaisement dans mon quotidien. Tu as cette manière unique de rendre les choses plus belles.</p>
+        <div class="quote">"Tu occupes une place irremplaçable dans mon cœur et dans ma vie."</div>
+        <p>Est-ce que tu ressens cette force qui nous lie, même malgré la distance ?</p>
+        <button type="button" class="btn-primary" onclick="nextStep(3)">Continuer ➜</button>
       </div>
 
+      <!-- ÉTAPE 3 : Excuses & Maturité -->
       <div id="step3" class="step">
-        <div class="emoji">💭🫦</div>
-        <h1>Et qu'est-ce qui te manque le PLUS chez moi là tout de suite ?</h1>
+        <h1>Du fond du cœur... 🙏🏽</h1>
+        <p>On a parfois nos malentendus, nos petites piques ou nos disputes. Je sais que je ne suis pas parfait, et je voulais sincèrement m'excuser pour les moments où j'ai pu te blesser ou manquer de patience.</p>
+        <p style="font-weight: 500; color: #8e44ad;">Mon but sera toujours de te préserver et de nous construire, pas de nous déchirer.</p>
         <div class="grid">
-          <div class="grid-item" onclick="selectOption('inputMissing', 'Mon humour', 4)">Mon humour exceptionnel 🤓</div>
-          <div class="grid-item" onclick="selectOption('inputMissing', 'Mes câlins', 4)">Mes câlins réconfortants 🫂</div>
-          <div class="grid-item" onclick="selectOption('inputMissing', 'Tes lèvres', 4)">Tes lèvres contre les miennes... 👄</div>
-          <div class="grid-item" onclick="selectOption('inputMissing', 'Absolument TOUT', 4)">Absolument TOUT 😏</div>
+          <div class="grid-item" onclick="selectOption('inputPardon', 'Pardon accordé avec amour', 4)">Je comprends et j'accepte tes excuses 🕊️</div>
+          <div class="grid-item" onclick="selectOption('inputPardon', 'Effacé, on avance ensemble', 4)">C'est oublié, l'important c'est nous deux 🤍</div>
         </div>
       </div>
 
+      <!-- ÉTAPE 4 : Tes Promesses -->
       <div id="step4" class="step">
-        <div class="emoji">👀🔥</div>
-        <h1>À tes risques et périls...</h1>
-        <p>Quand on se revoit ENFIN la prochaine fois, tu me feras quoi en premier ?</p>
+        <h1>Mes promesses pour l'avenir 🤝🏽✨</h1>
+        <p>Je te promets d'être plus à l'écoute, de continuer à prendre soin de toi (et de <i>mes biens-aimés</i> ❤️), et de toujours me battre pour notre complicité.</p>
+        <p>Et toi, quelle est la petite promesse que tu aimerais me faire en retour ?</p>
         <div class="grid">
-          <div class="grid-item" onclick="selectOption('inputWillDo', 'Câlin de 10 min', 5)">Un gros câlin de 10 minutes 🫂</div>
-          <div class="grid-item" onclick="selectOption('inputWillDo', 'Bisou sans fin', 5)">Un bisou qui n'en finit plus 💋</div>
-          <div class="grid-item" onclick="selectOption('inputWillDo', 'Sauter dessus direct', 5)">Je te saute dessus direct 😈</div>
-          <div class="grid-item" onclick="selectOption('inputWillDo', 'Secret pro', 5)">Secret professionnel... 🤫</div>
+          <div class="grid-item" onclick="selectOption('inputHerPromise', 'Être plus patiente aussi', 5)">D'être plus patiente et d'être toujours là pour toi 🫂</div>
+          <div class="grid-item" onclick="selectOption('inputHerPromise', 'Communiquer encore plus', 5)">De toujours te dire ce que je ressens sans filtre 💬</div>
+          <div class="grid-item" onclick="selectOption('inputHerPromise', 'Prendre soin de toi', 5)">De prendre grand soin de ton cœur 💖</div>
         </div>
       </div>
 
+      <!-- ÉTAPE 5 : Petite note personnelle (Optionnelle pour elle) -->
       <div id="step5" class="step">
-        <div class="emoji">🫵🏽⚡️</div>
-        <h1>Et toi...</h1>
-        <p>Tu aimerais que <b>moi</b> je te fasse quoi en priorité à mon retour ?</p>
-        <div class="grid">
-          <div class="grid-item" onclick="selectOption('inputWantDone', 'Prendre soin de toi', 6)">Prendre soin de toi 💆🏽‍♂️</div>
-          <div class="grid-item" onclick="selectOption('inputWantDone', 'Embrasser tes lèvres', 6)">Embrasser tes lèvres intensément 🫦</div>
-          <div class="grid-item" onclick="selectOption('inputWantDone', 'Soin de MES biens-aimés ❤️', 6)">Prendre grand soin de <b>mes biens-aimés</b> 😏❤️</div>
-          <div class="grid-item" onclick="selectOption('inputWantDone', 'Traitement VIP', 6)">Un traitement VIP complet 💯</div>
-        </div>
-      </div>
-
-      <div id="step6" class="step">
-        <div class="emoji">⛪️😂</div>
-        <h1>Question très importante...</h1>
-        <p>Si je rentre, est-ce qu'on va ENFIN aller à l'église ensemble ? 🙈</p>
-        <div class="grid">
-          <div class="grid-item" onclick="selectOption('inputChurch', 'Oui enfin !', 7)">Oui ! C'est bon cette fois c'est la bonne 🙏🏽✨</div>
-          <div class="grid-item" onclick="selectOption('inputChurch', 'On va encore reporter haha', 7)">On sait tous les deux qu'on va reporter 😂</div>
-          <div class="grid-item" onclick="selectOption('inputChurch', 'Promis juré', 7)">Promis juré, cette fois on y va 🤝🏽</div>
-        </div>
-      </div>
-
-      <div id="step7" class="step">
-        <div class="emoji">🍹🚗</div>
-        <h1>Et concernant nos sorties à deux...</h1>
-        <p>Toutes les sorties qu'on planifie depuis des décennies sans jamais les faire, on s'y met pour de vrai ? 🤣</p>
-        <div class="grid">
-          <div class="grid-item" onclick="selectOption('inputOuting', 'Obligé !', 8)">Obligé ! On valide toutes nos dates manquées 🔥</div>
-          <div class="grid-item" onclick="selectOption('inputOuting', 'Oui avec toi', 8)">Partout où tu m'emmènes ! 🥰</div>
-          <div class="grid-item" onclick="selectOption('inputOuting', 'Planning blindé', 8)">Prépare-toi, le programme sera très chargé 🗓️</div>
-        </div>
-      </div>
-
-      <div id="step8" class="step">
-        <div class="emoji">💔🫂</div>
-        <h1>Aveu 100% sincère...</h1>
-        <p>Je veux juste te serrer fort et sentir ton parfum... Tu me manques tellement 😭❤️</p>
-        <button type="button" class="btn-primary" onclick="nextStep(9)">Suivant ➜</button>
-      </div>
-
-      <div id="step9" class="step">
-        <div class="emoji">👑💛</div>
-        <h1>Pour toi mon bébé Nannnncyyyyy ✨</h1>
-        <p style="font-size: 1.2rem; font-weight: bold; color: #c2185b; margin-top: 10px;">
-          Je t'aime 💛
-        </p>
-        <p style="font-size: 0.9rem; color: #666; margin-bottom: 25px;">(Et là tu n'as pas le choix de la réponse 😏)</p>
-        
-        <div style="position: relative; min-height: 100px;">
-          <button type="submit" class="btn-primary btn-love">Moi aussi je t'aime ! 💛✨</button>
-          <button type="button" class="btn-run" id="noBtn" onmouseover="moveBtn()" onclick="moveBtn()">Non 😜</button>
-        </div>
+        <h1>Un petit mot pour moi ? ✍🏽</h1>
+        <p>Si tu as quelque chose sur le cœur, une envie, ou juste un mot doux à me laisser...</p>
+        <textarea name="Message personnel" id="customNoteText" rows="4" placeholder="Écris ici ce que tu as envie de me dire... (optionnel)"></textarea>
+        <button type="submit" class="btn-primary">Envoyer avec tout ton cœur 💌</button>
       </div>
     </form>
 
-    <div id="step10" class="step">
-      <div class="emoji">🚨🫦🔥</div>
-      <h1>MESSAGE ENREGISTRÉ !</h1>
-      <p>Tes réponses sont bien arrivées mon bébé. Le compte à rebours est officiellement lancé ! ⏳</p>
-      <p style="font-size: 1.1rem; color: #c2185b; font-weight: bold; margin-top: 15px;">
-        Prépare-toi bien Nannnncyyyyy, parce que les retrouvailles (et les sorties) vont être au top ! 😈🔥
-      </p>
-      <p style="font-size: 0.85rem; color: #888; margin-top: 25px;">(P.S. Mes "biens-aimés" dans ton cœur sont prêts 😂❤️)</p>
+    <!-- ÉTAPE 6 : Confirmation -->
+    <div id="step6" class="step">
+      <h1>Merci mon bébé 🤍</h1>
+      <p>Tes mots ont bien été envoyés. Merci d'être la personne extraordinaire que tu es au quotidien.</p>
+      <p style="font-size: 1.1rem; color: #8e44ad; font-weight: 600;">Je t'aime infiniment, Nannnncyyyyy. ✨</p>
     </div>
 
   </div>
@@ -179,24 +156,19 @@
       nextStep(nextStepNum);
     }
 
-    function updateSlider(val) {
-      const display = document.getElementById('rangeValue');
-      let text = val + "/10";
-      if(val > 10 && val < 90) text = val + "/10 (C'est déjà mieux ! 😏)";
-      else if(val >= 90) text = val + "/10 !! 🔥🔥";
-      display.innerText = text;
-      document.getElementById('inputScore').value = text;
+    function toggleMusic() {
+      const music = document.getElementById('bgMusic');
+      const text = document.getElementById('musicText');
+      if (music.paused) {
+        music.play();
+        text.innerText = "Pause";
+      } else {
+        music.pause();
+        text.innerText = "Musique";
+      }
     }
 
-    // Faire fuir le bouton "Non 😜"
-    function moveBtn() {
-      const btn = document.getElementById('noBtn');
-      const x = Math.random() * 200 - 100;
-      const y = Math.random() * 100 - 50;
-      btn.style.transform = `translate(${x}px, ${y}px)`;
-    }
-
-    const form = document.getElementById("quizForm");
+    const form = document.getElementById("loveForm");
     form.addEventListener("submit", async function(event) {
       event.preventDefault();
       const data = new FormData(event.target);
@@ -205,12 +177,11 @@
         body: data,
         headers: { 'Accept': 'application/json' }
       }).then(response => {
-        nextStep(10);
+        nextStep(6);
       }).catch(error => {
-        nextStep(10);
+        nextStep(6);
       });
     });
   </script>
 </body>
-  </html>
-            
+</html>
