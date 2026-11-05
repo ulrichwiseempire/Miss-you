@@ -3,183 +3,366 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pour toi, Nannnncyyyyy 🥹💛✨</title>
+  <title>Joyeux Anniversaire Ma Vie ❤️</title>
   <style>
+    :root {
+      --bg-color: #3b0918;
+      --card-bg: #4a0e20;
+      --text-gold: #f3d3a0;
+      --text-light: #fefefe;
+      --accent-pink: #d1587a;
+    }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
       font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
-      background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%), linear-gradient(to top, #fad0c4 0%, #ffd1ff 100%);
-      background-blend-mode: overlay;
+      background-color: var(--bg-color);
+      color: var(--text-light);
       display: flex; justify-content: center; align-items: center;
-      min-height: 100vh; padding: 20px; color: #333333;
+      min-height: 100vh; padding: 20px 15px;
     }
-    .card {
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.6);
-      padding: 35px 25px; border-radius: 28px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-      text-align: center; max-width: 460px; width: 100%;
-      position: relative; overflow: hidden;
+
+    .container {
+      width: 100%; max-width: 440px; margin: 0 auto;
+      text-align: center;
     }
-    .audio-btn {
-      position: absolute; top: 15px; right: 15px;
-      background: rgba(255, 255, 255, 0.9); border: none;
-      padding: 8px 12px; border-radius: 20px; font-size: 0.8rem;
-      cursor: pointer; box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-      display: flex; align-items: center; gap: 5px; color: #555;
+
+    /* 🔐 1. ÉCRAN DE VERROUILLAGE */
+    .lock-screen {
+      background: var(--card-bg);
+      border: 1px solid rgba(243, 211, 160, 0.2);
+      border-radius: 24px; padding: 35px 20px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.4);
     }
-    .step { display: none; animation: fadeIn 0.6s ease-out; }
-    .step.active { display: block; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-    
-    .photo-frame {
-      width: 140px; height: 140px; border-radius: 50%;
-      margin: 0 auto 20px; overflow: hidden;
-      border: 4px solid #fff; box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    .badge {
+      display: inline-block; padding: 6px 14px; border-radius: 20px;
+      background: rgba(255, 255, 255, 0.08); font-size: 0.8rem;
+      letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px;
     }
-    .photo-frame img { width: 100%; height: 100%; object-fit: cover; }
-    
-    h1 { color: #8e44ad; font-size: 1.4rem; font-weight: 600; margin-bottom: 15px; line-height: 1.4; }
-    p { color: #555; font-size: 0.98rem; line-height: 1.6; margin-bottom: 22px; }
-    .quote { font-style: italic; color: #7f8c8d; border-left: 3px solid #8e44ad; padding-left: 12px; text-align: left; margin: 15px 0; }
-    
-    button.btn-primary {
-      padding: 14px 28px; font-size: 0.95rem; font-weight: 600; border: none;
-      border-radius: 25px; cursor: pointer; transition: all 0.3s ease;
-      background: linear-gradient(135deg, #a18cd1 0%, #fbc2eb 100%);
-      color: #fff; width: 100%; box-shadow: 0 4px 15px rgba(161, 140, 209, 0.4);
+    h1.title {
+      font-family: 'Georgia', serif; font-size: 1.8rem;
+      color: var(--text-gold); margin-bottom: 25px; line-height: 1.3;
     }
-    button.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(161, 140, 209, 0.6); }
-    
-    .grid { display: grid; grid-template-columns: 1fr; gap: 12px; margin-bottom: 20px; }
-    .grid-item {
-      border: 1px solid rgba(142, 68, 173, 0.2); background: rgba(255, 255, 255, 0.7);
-      padding: 14px 18px; border-radius: 16px; cursor: pointer;
-      font-weight: 500; font-size: 0.95rem; color: #444;
-      transition: all 0.25s ease; text-align: left;
+    .input-box {
+      width: 100%; padding: 14px; border-radius: 12px;
+      border: 1px solid rgba(243, 211, 160, 0.3);
+      background: rgba(0, 0, 0, 0.2); color: #fff;
+      font-size: 1rem; text-align: center; outline: none; margin-bottom: 15px;
     }
-    .grid-item:hover { border-color: #8e44ad; background: #fff; color: #8e44ad; }
-    
-    textarea {
-      width: 100%; padding: 12px; border-radius: 15px;
-      border: 1px solid rgba(142, 68, 173, 0.3); background: rgba(255, 255, 255, 0.9);
-      font-family: inherit; font-size: 0.95rem; margin-bottom: 20px;
-      resize: none; outline: none;
+    .btn-gold {
+      width: 100%; padding: 14px; border-radius: 12px; border: none;
+      background: linear-gradient(135deg, #f3d3a0 0%, #d4a359 100%);
+      color: #3b0918; font-weight: bold; font-size: 1rem; cursor: pointer;
+      transition: transform 0.2s;
     }
+    .btn-gold:active { transform: scale(0.98); }
+
+    /* 🎁 CONTENU DU SITE (MASQUÉ AU DÉPART) */
+    .content { display: none; }
+    .content.active { display: block; animation: fadeIn 0.8s ease-in; }
+
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+    .section {
+      background: var(--card-bg); border-radius: 20px;
+      padding: 25px 20px; margin-bottom: 25px;
+      border: 1px solid rgba(243, 211, 160, 0.15); text-align: left;
+    }
+
+    .section-title {
+      font-family: 'Georgia', serif; font-size: 1.4rem;
+      color: var(--text-gold); margin-bottom: 15px; text-align: center;
+    }
+
+    /* 💌 2. ENVELOPPE ANIMÉE */
+    .envelope-box {
+      background: rgba(0, 0, 0, 0.2); border-radius: 16px;
+      padding: 20px; text-align: center; cursor: pointer;
+      border: 1px dashed var(--text-gold); transition: all 0.3s;
+    }
+    .envelope-icon { font-size: 2.5rem; margin-bottom: 8px; }
+    .letter-text {
+      display: none; font-size: 0.95rem; line-height: 1.7;
+      color: #eaeaea; text-align: left; margin-top: 15px;
+      border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px;
+    }
+
+    /* 📸 3. POLAROÏDS */
+    .polaroid-grid { display: flex; flex-direction: column; gap: 20px; align-items: center; }
+    .polaroid {
+      background: #fff; color: #333; padding: 12px 12px 25px 12px;
+      border-radius: 4px; box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+      width: 90%; transform: rotate(-2deg); transition: transform 0.3s;
+    }
+    .polaroid:nth-child(even) { transform: rotate(2deg); }
+    .polaroid img { width: 100%; height: 260px; object-fit: cover; border-radius: 2px; }
+    .polaroid p { font-family: 'Courier New', monospace; margin-top: 10px; text-align: center; font-weight: bold; font-size: 0.9rem; }
+
+    /* ⏳ 4. LIGNE DU TEMPS */
+    .timeline { border-left: 2px solid var(--text-gold); padding-left: 20px; margin-left: 10px; }
+    .timeline-item { position: relative; margin-bottom: 25px; }
+    .timeline-item::before {
+      content: ''; position: absolute; left: -26px; top: 4px;
+      width: 10px; height: 10px; border-radius: 50%; background: var(--text-gold);
+    }
+    .timeline-date { font-size: 0.8rem; color: var(--text-gold); opacity: 0.8; margin-bottom: 4px; }
+    .timeline-title { font-weight: bold; font-size: 1.05rem; margin-bottom: 6px; }
+    .timeline-img { width: 100%; height: 160px; object-fit: cover; border-radius: 12px; margin-top: 8px; }
+
+    /* ✨ 5. CE QUI TE REND UNIQUE */
+    .unique-list { list-style: none; }
+    .unique-list li {
+      padding: 12px 15px; background: rgba(0, 0, 0, 0.2);
+      border-radius: 10px; margin-bottom: 10px; font-size: 0.95rem;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .unique-list span { color: var(--text-gold); font-weight: bold; }
+
+    /* ⏱️ 6. COMPTEUR DE TEMPS */
+    .timer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; text-align: center; }
+    .timer-card { background: rgba(0, 0, 0, 0.3); padding: 12px 5px; border-radius: 10px; border: 1px solid rgba(243, 211, 160, 0.2); }
+    .timer-number { font-size: 1.3rem; font-weight: bold; color: var(--text-gold); }
+    .timer-label { font-size: 0.7rem; text-transform: uppercase; opacity: 0.7; margin-top: 4px; }
+
+    /* 🎙️ 7. MESSAGE VOCAL */
+    .audio-player {
+      background: rgba(0,0,0,0.2); padding: 15px; border-radius: 15px;
+      display: flex; align-items: center; gap: 15px; border: 1px solid rgba(243, 211, 160, 0.2);
+    }
+    .vinyl {
+      width: 45px; height: 45px; border-radius: 50%; background: #111;
+      border: 2px solid var(--text-gold); display: flex; align-items: center; justify-content: center;
+      animation: spin 4s linear infinite paused;
+    }
+    .vinyl.playing { animation-play-state: running; }
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+
+    /* ✈️ 8. QUIZ / DESTINATION */
+    .quiz-btn {
+      width: 100%; padding: 12px; margin-bottom: 8px; border-radius: 10px;
+      border: 1px solid rgba(243, 211, 160, 0.3); background: rgba(255,255,255,0.05);
+      color: #fff; text-align: left; cursor: pointer; transition: 0.3s;
+    }
+    .quiz-btn:hover { background: rgba(243, 211, 160, 0.2); }
+
+    /* 💌 FORMSPREE RETOUR */
+    .feedback-btn {
+      padding: 10px 15px; border-radius: 20px; border: 1px solid var(--text-gold);
+      background: transparent; color: var(--text-gold); font-size: 0.85rem;
+      cursor: pointer; margin: 4px; transition: 0.3s;
+    }
+    .feedback-btn:hover { background: var(--text-gold); color: #3b0918; }
   </style>
 </head>
 <body>
 
-  <!-- Musique de fond -->
-  <audio id="bgMusic" loop>
-    <source src="musique.mp3" type="audio/mpeg">
-  </audio>
+  <div class="container">
 
-  <div class="card">
-    <button class="audio-btn" onclick="toggleMusic()">🎵 <span id="musicText">Musique</span></button>
+    <!-- 🔒 STEP 1 : ÉCRAN DE VERROUILLAGE -->
+    <div id="lockScreen" class="lock-screen">
+      <div class="badge">🔒 Invitation Privée</div>
+      <h1 class="title">Joyeux 1er Anniversaire Ma Vie ❤️</h1>
+      <p style="font-size: 0.9rem; margin-bottom: 20px; opacity: 0.8;">Entre le mot secret (0511) pour débloquer ta surprise :</p>
+      <input type="text" id="secretInput" class="input-box" placeholder="Entre le code 0511">
+      <button class="btn-gold" onclick="unlock()">Ouvrir ✨</button>
+      <p id="errorMsg" style="color: #ff6b6b; font-size: 0.8rem; margin-top: 10px; display: none;">Mot de passe incorrect 😜</p>
+    </div>
 
-    <form id="loveForm" action="https://formspree.io/f/mvzeebeo" method="POST">
-      <input type="hidden" name="Pardon accepté ?" id="inputPardon">
-      <input type="hidden" name="Ce qu'elle a ressenti" id="inputFeeling">
-      <input type="hidden" name="Sa promesse pour nous" id="inputHerPromise">
+    <!-- 🎁 STEP 2 : CONTENU PRINCIPAL -->
+    <div id="mainContent" class="content">
 
-      <!-- ÉTAPE 1 : Accueil doux & Photo de la plage -->
-      <div id="step1" class="step active">
-        <div class="photo-frame">
-          <img src="image.jpg" alt="Nancy et moi">
-        </div>
-        <h1>Pour toi, Nannnncyyyyy 🕊️</h1>
-        <p>J'ai pris quelques minutes pour poser des mots sur ce que je ressens. Pas de blagues cette fois... juste toi et moi, en toute sincérité.</p>
-        <button type="button" class="btn-primary" onclick="nextStep(2)">Prendre un instant pour lire 🤍</button>
-      </div>
+      <h1 class="title" style="font-size: 2rem; margin: 20px 0 10px;">Un An Ensemble 🥂</h1>
+      <p style="font-size: 0.85rem; color: var(--text-gold); margin-bottom: 25px;">FAIS DÉFILER POUR DÉCOUVRIR TES SURPRISES</p>
 
-      <!-- ÉTAPE 2 : Ce qu'elle apporte dans ta vie -->
-      <div id="step2" class="step">
-        <h1>La place que tu as 💫</h1>
-        <p>Tu n'imagines pas à quel point ton arrivée a apporté de la lumière et de l'apaisement dans mon quotidien. Tu as cette manière unique de rendre les choses plus belles.</p>
-        <div class="quote">"Tu occupes une place irremplaçable dans mon cœur et dans ma vie."</div>
-        <p>Est-ce que tu ressens cette force qui nous lie, même malgré la distance ?</p>
-        <button type="button" class="btn-primary" onclick="nextStep(3)">Continuer ➜</button>
-      </div>
-
-      <!-- ÉTAPE 3 : Excuses & Maturité -->
-      <div id="step3" class="step">
-        <h1>Du fond du cœur... 🙏🏽</h1>
-        <p>On a parfois nos malentendus, nos petites piques ou nos disputes. Je sais que je ne suis pas parfait, et je voulais sincèrement m'excuser pour les moments où j'ai pu te blesser ou manquer de patience.</p>
-        <p style="font-weight: 500; color: #8e44ad;">Mon but sera toujours de te préserver et de nous construire, pas de nous déchirer.</p>
-        <div class="grid">
-          <div class="grid-item" onclick="selectOption('inputPardon', 'Pardon accordé avec amour', 4)">Je comprends et j'accepte tes excuses 🕊️</div>
-          <div class="grid-item" onclick="selectOption('inputPardon', 'Effacé, on avance ensemble', 4)">C'est oublié, l'important c'est nous deux 🤍</div>
+      <!-- 💌 LETTRE (Option B) -->
+      <div class="section">
+        <h2 class="section-title">Une lettre rien que pour toi 📜</h2>
+        <div class="envelope-box" onclick="toggleLetter()">
+          <div class="envelope-icon">💌</div>
+          <div style="font-size: 0.9rem; color: var(--text-gold);">Touche l'enveloppe pour lire...</div>
+          <div id="letterText" class="letter-text">
+            Mon cœur, une année entière à tes côtés... Le temps passe si vite quand on est avec la bonne personne. Merci d'être mon havre de paix, ma complice et mon sourire de tous les jours. Promis, les 365 prochains jours seront encore plus beaux. Je t'aime à l'infini. 🥂💖
+          </div>
         </div>
       </div>
 
-      <!-- ÉTAPE 4 : Tes Promesses -->
-      <div id="step4" class="step">
-        <h1>Mes promesses pour l'avenir 🤝🏽✨</h1>
-        <p>Je te promets d'être plus à l'écoute, de continuer à prendre soin de toi (et de <i>mes biens-aimés</i> ❤️), et de toujours me battre pour notre complicité.</p>
-        <p>Et toi, quelle est la petite promesse que tu aimerais me faire en retour ?</p>
-        <div class="grid">
-          <div class="grid-item" onclick="selectOption('inputHerPromise', 'Être plus patiente aussi', 5)">D'être plus patiente et d'être toujours là pour toi 🫂</div>
-          <div class="grid-item" onclick="selectOption('inputHerPromise', 'Communiquer encore plus', 5)">De toujours te dire ce que je ressens sans filtre 💬</div>
-          <div class="grid-item" onclick="selectOption('inputHerPromise', 'Prendre soin de toi', 5)">De prendre grand soin de ton cœur 💖</div>
+      <!-- 📸 SOUVENIRS POLAROÏD -->
+      <div class="section">
+        <h2 class="section-title">Nos plus beaux clichés 📸</h2>
+        <div class="polaroid-grid">
+          <div class="polaroid">
+            <img src="image.jpg" alt="Souvenir 1">
+            <p>Toi & Moi 🌊</p>
+          </div>
+          <div class="polaroid">
+            <img src="photo2.jpg" alt="Souvenir 2">
+            <p>Notre plus belle complicité ❤️</p>
+          </div>
         </div>
       </div>
 
-      <!-- ÉTAPE 5 : Petite note personnelle (Optionnelle pour elle) -->
-      <div id="step5" class="step">
-        <h1>Un petit mot pour moi ? ✍🏽</h1>
-        <p>Si tu as quelque chose sur le cœur, une envie, ou juste un mot doux à me laisser...</p>
-        <textarea name="Message personnel" id="customNoteText" rows="4" placeholder="Écris ici ce que tu as envie de me dire... (optionnel)"></textarea>
-        <button type="submit" class="btn-primary">Envoyer avec tout ton cœur 💌</button>
+      <!-- ⏳ LIGNE DU TEMPS -->
+      <div class="section">
+        <h2 class="section-title">Notre Histoire 📖</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-date">Le Début</div>
+            <div class="timeline-title">Notre rencontre ✨</div>
+            <p style="font-size: 0.85rem; opacity: 0.8;">Le jour où tout a commencé et où ma vie a changé.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">1er An</div>
+            <div class="timeline-title">Un an de bonheur ❤️</div>
+            <p style="font-size: 0.85rem; opacity: 0.8;">365 jours de rires, de complicité et d'amour fou.</p>
+            <img src="image.jpg" class="timeline-img" alt="Timeline Photo">
+          </div>
+        </div>
       </div>
-    </form>
 
-    <!-- ÉTAPE 6 : Confirmation -->
-    <div id="step6" class="step">
-      <h1>Merci mon bébé 🤍</h1>
-      <p>Tes mots ont bien été envoyés. Merci d'être la personne extraordinaire que tu es au quotidien.</p>
-      <p style="font-size: 1.1rem; color: #8e44ad; font-weight: 600;">Je t'aime infiniment, Nannnncyyyyy. ✨</p>
+      <!-- ✨ CE QUI TE REND UNIQUE (Avec la touche front) -->
+      <div class="section">
+        <h2 class="section-title">Tout ce qui te rend unique ✨</h2>
+        <ul class="unique-list">
+          <li><span>01.</span> Ton sourire qui illumine instantanément mes journées ☀️</li>
+          <li><span>02.</span> Ton rire, ta douceur et ta bienveillance au quotidien 🤍</li>
+          <li><span>03.</span> La façon si naturelle dont tu as pris une place immense dans mon cœur</li>
+          <li><span>04.</span> Avec ton gros front là 🥲 j'aime ça aussi ❤️</li>
+        </ul>
+      </div>
+
+      <!-- ⏱️ COMPTEUR DE TEMPS -->
+      <div class="section">
+        <h2 class="section-title">Ensemble depuis... ⏳</h2>
+        <div class="timer-grid">
+          <div class="timer-card"><div class="timer-number" id="days">365</div><div class="timer-label">Jours</div></div>
+          <div class="timer-card"><div class="timer-number" id="hours">12</div><div class="timer-label">Heures</div></div>
+          <div class="timer-card"><div class="timer-number" id="minutes">30</div><div class="timer-label">Min</div></div>
+          <div class="timer-card"><div class="timer-number" id="seconds">45</div><div class="timer-label">Sec</div></div>
+        </div>
+      </div>
+
+      <!-- 🎙️ MESSAGE VOCAL / MUSIQUE -->
+      <div class="section">
+        <h2 class="section-title">Un mot doux pour tes oreilles 🎵</h2>
+        <div class="audio-player">
+          <div class="vinyl" id="vinylIcon">🎙️</div>
+          <div style="flex-1; text-align: left;">
+            <div style="font-size: 0.9rem; font-weight: bold;">Un message vocal pour toi</div>
+            <div style="font-size: 0.75rem; opacity: 0.7;">Appuie pour écouter 🎧</div>
+          </div>
+          <button class="feedback-btn" onclick="playAudio()">Écouter</button>
+        </div>
+        <audio id="vocalAudio" src="musique.mp3"></audio>
+      </div>
+
+      <!-- ✈️ PROGRAMME / SORTIES CHOISIES -->
+      <div class="section">
+        <h2 class="section-title">Notre programme d'amour 🗓️✨</h2>
+        <p style="font-size: 0.85rem; margin-bottom: 15px; opacity: 0.8;">Qu'est-ce qui te fait le plus envie pour fêter ça ?</p>
+        <button class="quiz-btn" onclick="sendChoice('Sortie cinéma à 2')">🎬 Sortie cinéma à 2</button>
+        <button class="quiz-btn" onclick="sendChoice('Élite burger pour élite chicken')">🍔 Élite burger pour élite chicken</button>
+        <button class="quiz-btn" onclick="sendChoice('Dans la chambre 🙈')">🙈 Dans la chambre</button>
+      </div>
+
+      <!-- 💬 REACTION & FORMSPREE -->
+      <div class="section" style="text-align: center;">
+        <h2 class="section-title">Un petit mot en retour ? 💌</h2>
+        <form id="annivForm" action="https://formspree.io/f/mvzeebeo" method="POST">
+          <input type="hidden" name="Choix Programme" id="destinationChoice">
+          <input type="hidden" name="Réaction" id="reactionInput">
+          
+          <p style="font-size: 0.85rem; margin-bottom: 10px;">Qu'as-tu pensé de cette surprise ?</p>
+          <button type="button" class="feedback-btn" onclick="submitReaction('J\'adore ! ❤️')">J'adore ! ❤️</button>
+          <button type="button" class="feedback-btn" onclick="submitReaction('Tu m\'as ému(e) 🥺')">Tu m'as ému(e) 🥺</button>
+          
+          <textarea name="Message Anniversaire" style="width: 100%; margin-top: 15px; padding: 12px; border-radius: 10px; border: 1px solid rgba(243,211,160,0.3); background: rgba(0,0,0,0.2); color: #fff; font-family: inherit; outline: none;" rows="3" placeholder="Écris-moi ton petit mot ici..."></textarea>
+          
+          <button type="submit" class="btn-gold" style="margin-top: 15px;">Envoyer mon message 💌</button>
+        </form>
+        <p id="thanksMsg" style="display: none; color: var(--text-gold); margin-top: 15px; font-weight: bold;">Message envoyé ! Je t'aime ❤️</p>
+      </div>
+
     </div>
 
   </div>
 
   <script>
-    function nextStep(stepNumber) {
-      document.querySelectorAll('.step').forEach(step => step.classList.remove('active'));
-      document.getElementById('step' + stepNumber).classList.add('active');
-    }
+    // 🔐 Code secret configuré sur 0511
+    const SECRET_CODE = "0511";
 
-    function selectOption(inputId, value, nextStepNum) {
-      document.getElementById(inputId).value = value;
-      nextStep(nextStepNum);
-    }
-
-    function toggleMusic() {
-      const music = document.getElementById('bgMusic');
-      const text = document.getElementById('musicText');
-      if (music.paused) {
-        music.play();
-        text.innerText = "Pause";
+    function unlock() {
+      const input = document.getElementById('secretInput').value.trim();
+      if (input === SECRET_CODE) {
+        document.getElementById('lockScreen').style.display = 'none';
+        document.getElementById('mainContent').classList.add('active');
+        startTimer();
       } else {
-        music.pause();
-        text.innerText = "Musique";
+        document.getElementById('errorMsg').style.display = 'block';
       }
     }
 
-    const form = document.getElementById("loveForm");
-    form.addEventListener("submit", async function(event) {
-      event.preventDefault();
-      const data = new FormData(event.target);
-      fetch(event.target.action, {
+    // 📜 Ouvrir la lettre
+    function toggleLetter() {
+      const letter = document.getElementById('letterText');
+      letter.style.display = letter.style.display === 'block' ? 'none' : 'block';
+    }
+
+    // ⏱️ Compteur
+    function startTimer() {
+      const startDate = new Date(2025, 10, 5); // Ajuste selon votre date exacte
+
+      setInterval(() => {
+        const now = new Date();
+        const diff = now - startDate;
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((diff / 1000 / 60) % 60);
+        const seconds = Math.floor((diff / 1000) % 60);
+
+        document.getElementById('days').innerText = days >= 0 ? days : 365;
+        document.getElementById('hours').innerText = hours >= 0 ? hours : 0;
+        document.getElementById('minutes').innerText = minutes >= 0 ? minutes : 0;
+        document.getElementById('seconds').innerText = seconds >= 0 ? seconds : 0;
+      }, 1000);
+    }
+
+    // 🎵 Audio
+    function playAudio() {
+      const audio = document.getElementById('vocalAudio');
+      const vinyl = document.getElementById('vinylIcon');
+      if (audio.paused) {
+        audio.play();
+        vinyl.classList.add('playing');
+      } else {
+        audio.pause();
+        vinyl.classList.remove('playing');
+      }
+    }
+
+    // 💬 Formspree
+    function sendChoice(choice) {
+      document.getElementById('destinationChoice').value = choice;
+      alert("Choix enregistré : " + choice + " ✨❤️");
+    }
+
+    function submitReaction(val) {
+      document.getElementById('reactionInput').value = val;
+      alert("Réaction : " + val);
+    }
+
+    const form = document.getElementById("annivForm");
+    form.addEventListener("submit", async function(e) {
+      e.preventDefault();
+      const data = new FormData(e.target);
+      fetch(e.target.action, {
         method: form.method,
         body: data,
         headers: { 'Accept': 'application/json' }
-      }).then(response => {
-        nextStep(6);
-      }).catch(error => {
-        nextStep(6);
+      }).then(() => {
+        document.getElementById('thanksMsg').style.display = 'block';
+        form.reset();
       });
     });
   </script>
